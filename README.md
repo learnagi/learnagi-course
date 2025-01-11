@@ -1,6 +1,6 @@
-# AI Engineer Practical Course
+# LearnAGI Course
 
-欢迎来到 AI 工程师实战课程！本课程旨在帮助你掌握成为专业 AI 工程师所需的核心技能。
+欢迎来到 LearnAGI 课程！本课程旨在帮助你掌握成为专业 AI 工程师所需的核心技能。
 
 ## 课程概述
 本课程涵盖从 LLM 基础概念到企业级应用的全方位内容，提供理论知识与实践经验的完美结合。
@@ -18,27 +18,32 @@
 - [核心概念](prompt-engineering/core-concepts/lesson.md)
 - [优化技巧](prompt-engineering/optimization-techniques/lesson.md)
 
-### 3. RAG 应用
+### 3. AI 编程
+- [代码生成基础](ai-coding/code-generation-basics/lesson.md)
+- [代码优化与重构](ai-coding/code-optimization/lesson.md)
+- [AI 辅助测试](ai-coding/ai-testing/lesson.md)
+
+### 4. RAG 应用
 - [RAG 基础](rag-applications/rag-basics/lesson.md)
 - [进阶 RAG](rag-applications/advanced-rag/lesson.md)
 
-### 4. 函数调用
+### 5. 函数调用
 - [函数调用基础](function-calling/function-calling-basics/lesson.md)
 - [工具集成](function-calling/tool-integration/lesson.md)
 
-### 5. Agent 开发
+### 6. Agent 开发
 - [Agent 基础](agent-development/agent-basics/lesson.md)
 - [多 Agent 协作](agent-development/multi-agent-collaboration/lesson.md)
 
-### 6. 多模态应用
+### 7. 多模态应用
 - [图像处理](multimodal-applications/image-processing/lesson.md)
 - [音频处理](multimodal-applications/audio-processing/lesson.md)
 
-### 7. LLM 微调
+### 8. LLM 微调
 - [模型微调](llm-fine-tuning/fine-tuning/lesson.md)
 - [部署与优化](llm-fine-tuning/deployment-and-optimization/lesson.md)
 
-### 8. 企业项目实战
+### 9. 企业项目实战
 - [完整项目开发](enterprise-projects/full-project-development/lesson.md)
 - [部署与维护](enterprise-projects/deployment-and-maintenance/lesson.md)
 

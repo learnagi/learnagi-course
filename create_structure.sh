@@ -36,4 +36,20 @@ for dir in "${directories[@]}"; do
     touch "$parent_dir/.gitkeep"
 done
 
+# Add new AI Coding directories
+mkdir -p ai-coding/code-generation-basics
+mkdir -p ai-coding/code-optimization
+mkdir -p ai-coding/ai-testing
+
+# Create lesson.md files
+touch ai-coding/code-generation-basics/lesson.md
+touch ai-coding/code-optimization/lesson.md
+touch ai-coding/ai-testing/lesson.md
+
+# Create .gitkeep files
+touch ai-coding/.gitkeep
+touch ai-coding/code-generation-basics/.gitkeep
+touch ai-coding/code-optimization/.gitkeep
+touch ai-coding/ai-testing/.gitkeep
+
 echo "Directory structure created successfully with .gitkeep files!" 
