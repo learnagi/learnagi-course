@@ -23,12 +23,12 @@ directories=(
     "enterprise-projects/deployment-and-maintenance"
 )
 
-# Create directories, lesson.md files and .gitkeep files
+# Create directories, index.md files and .gitkeep files
 for dir in "${directories[@]}"; do
     # Create directory
     mkdir -p "$dir"
-    # Create lesson.md
-    touch "$dir/lesson.md"
+    # Create index.md instead of lesson.md
+    touch "$dir/index.md"
     # Create .gitkeep
     touch "$dir/.gitkeep"
     # Also create .gitkeep in parent directory
@@ -36,15 +36,15 @@ for dir in "${directories[@]}"; do
     touch "$parent_dir/.gitkeep"
 done
 
-# Add new AI Coding directories
+# Add AI Coding directories
 mkdir -p ai-coding/code-generation-basics
 mkdir -p ai-coding/code-optimization
 mkdir -p ai-coding/ai-testing
 
-# Create lesson.md files
-touch ai-coding/code-generation-basics/lesson.md
-touch ai-coding/code-optimization/lesson.md
-touch ai-coding/ai-testing/lesson.md
+# Create index.md files for AI Coding
+touch ai-coding/code-generation-basics/index.md
+touch ai-coding/code-optimization/index.md
+touch ai-coding/ai-testing/index.md
 
 # Create .gitkeep files
 touch ai-coding/.gitkeep

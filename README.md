@@ -11,41 +11,41 @@
 ## 目录
 
 ### 1. LLM 基础
-- [环境搭建](llm-basics/environment-setup/lesson.md)
-- [模型 API 使用](llm-basics/model-api-usage/lesson.md)
+- [环境搭建](llm-basics/environment-setup/index.md)
+- [模型 API 使用](llm-basics/model-api-usage/index.md)
 
 ### 2. 提示词工程
-- [核心概念](prompt-engineering/core-concepts/lesson.md)
-- [优化技巧](prompt-engineering/optimization-techniques/lesson.md)
+- [核心概念](prompt-engineering/core-concepts/index.md)
+- [优化技巧](prompt-engineering/optimization-techniques/index.md)
 
 ### 3. AI 编程
-- [代码生成基础](ai-coding/code-generation-basics/lesson.md)
-- [代码优化与重构](ai-coding/code-optimization/lesson.md)
-- [AI 辅助测试](ai-coding/ai-testing/lesson.md)
+- [代码生成基础](ai-coding/code-generation-basics/index.md)
+- [代码优化与重构](ai-coding/code-optimization/index.md)
+- [AI 辅助测试](ai-coding/ai-testing/index.md)
 
 ### 4. RAG 应用
-- [RAG 基础](rag-applications/rag-basics/lesson.md)
-- [进阶 RAG](rag-applications/advanced-rag/lesson.md)
+- [RAG 基础](rag-applications/rag-basics/index.md)
+- [进阶 RAG](rag-applications/advanced-rag/index.md)
 
 ### 5. 函数调用
-- [函数调用基础](function-calling/function-calling-basics/lesson.md)
-- [工具集成](function-calling/tool-integration/lesson.md)
+- [函数调用基础](function-calling/function-calling-basics/index.md)
+- [工具集成](function-calling/tool-integration/index.md)
 
 ### 6. Agent 开发
-- [Agent 基础](agent-development/agent-basics/lesson.md)
-- [多 Agent 协作](agent-development/multi-agent-collaboration/lesson.md)
+- [Agent 基础](agent-development/agent-basics/index.md)
+- [多 Agent 协作](agent-development/multi-agent-collaboration/index.md)
 
 ### 7. 多模态应用
-- [图像处理](multimodal-applications/image-processing/lesson.md)
-- [音频处理](multimodal-applications/audio-processing/lesson.md)
+- [图像处理](multimodal-applications/image-processing/index.md)
+- [音频处理](multimodal-applications/audio-processing/index.md)
 
 ### 8. LLM 微调
-- [模型微调](llm-fine-tuning/fine-tuning/lesson.md)
-- [部署与优化](llm-fine-tuning/deployment-and-optimization/lesson.md)
+- [模型微调](llm-fine-tuning/fine-tuning/index.md)
+- [部署与优化](llm-fine-tuning/deployment-and-optimization/index.md)
 
 ### 9. 企业项目实战
-- [完整项目开发](enterprise-projects/full-project-development/lesson.md)
-- [部署与维护](enterprise-projects/deployment-and-maintenance/lesson.md)
+- [完整项目开发](enterprise-projects/full-project-development/index.md)
+- [部署与维护](enterprise-projects/deployment-and-maintenance/index.md)
 
 ## 如何使用本课程
 
@@ -61,7 +61,7 @@
 ## 开始学习
 1. 克隆本仓库
 2. 安装所需依赖
-3. 从[环境搭建](llm-basics/environment-setup/lesson.md)开始学习
+3. 从[环境搭建](llm-basics/environment-setup/index.md)开始学习
 
 ## 参与贡献
 我们欢迎各种形式的贡献，包括：
