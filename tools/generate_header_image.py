@@ -8,6 +8,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 import os
 from pathlib import Path
+import re
 import requests
 import sys
 
@@ -78,7 +79,9 @@ class HeaderImageGenerator:
             
             # 根据文档路径动态生成输出路径
             output_dir = os.path.dirname(doc_path)
-            filename = "header.png"
+            # 从文档路径中提取模块名作为文件名前缀
+            module_name = os.path.splitext(os.path.basename(doc_path))[0]
+            filename = f"{module_name}_header.png"
             output_path = os.path.join(output_dir, "images", filename)
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
             
@@ -101,21 +104,26 @@ class HeaderImageGenerator:
             f.write(response.content)
         print(f"图片已保存至: {save_path}")
 
-    def _update_documentation(self, filename, doc_path):
+    def _update_documentation(self, filename: str, doc_path: str):
         """更新文档中的图片引用"""
-        new_header = f"![Header Image](./images/{filename})"
-        
-        with open(doc_path, "r+", encoding="utf-8") as f:
-            content = f.read()
-            updated_content = content.replace(
-                "![Header Image](./images/image-generation/header.png)",
-                new_header
+        try:
+            with open(doc_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+                
+            # 更新图片引用
+            content = re.sub(
+                r'!\[.*?\]\(images/.*?\.png\)',
+                f'![Header Image](images/{filename})',
+                content
             )
-            f.seek(0)
-            f.write(updated_content)
-            f.truncate()
-        
-        print("文档封面图片已更新")
+            
+            with open(doc_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+                
+            print("文档封面图片已更新")
+            
+        except Exception as e:
+            print(f"更新文档时出错: {str(e)}")
 
 def main():
     parser = argparse.ArgumentParser(description="生成教程题图")

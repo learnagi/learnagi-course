@@ -7,8 +7,8 @@ estimated_minutes: 25
 language: "zh-CN"
 ---
 
-![Image Generation](images/header.png)
-*文字化图，创意无限*
+![Header Image](https://z1.zve.cn/tutorial/llm-basics/image-generation_header.png)
+*AI 绘画，创意无限*
 
 # 文生图能力
 
@@ -176,7 +176,7 @@ using clean lines and bold colors. The scene is well-lit with natural lighting f
 Minimalist aesthetic with a color palette of soft blues and warm grays.
 ```
 
-![现代工作空间](images/generated_image_1.png)
+![现代工作空间](https://z1.zve.cn/tutorial/llm-basics/generated_image_1.png)
 
 ### 2. 智能城市（等距风格）
 
@@ -187,7 +187,7 @@ and green energy solutions. Clean geometric shapes, consistent 120-degree angles
 bold color palette with tech-inspired blues and whites.
 ```
 
-![智能城市](images/generated_image_2.png)
+![智能城市](https://z1.zve.cn/tutorial/llm-basics/generated_image_2.png)
 
 ### 3. 日本花园（水彩风格）
 
@@ -198,7 +198,7 @@ with blooming cherry blossoms, a small wooden bridge over a koi pond,
 and traditional stone lanterns. Soft, flowing colors with visible brush strokes.
 ```
 
-![日本花园](images/generated_image_3.png)
+![日本花园](https://z1.zve.cn/tutorial/llm-basics/generated_image_3.png)
 
 ### 4. 数据安全仪表盘
 
@@ -208,7 +208,7 @@ Here is the flat illustration of a professional discussing data security on a fu
 featuring a gradient color scheme of deep blue, soft purple, and white highlights.
 ```
 
-![数据安全仪表盘](images/generated_image_4.png)
+![数据安全仪表盘](https://z1.zve.cn/tutorial/llm-basics/generated_image_4.png)
 
 ### 5. 圣诞树（迪士尼风格）
 
@@ -218,7 +218,7 @@ A cute 3D-rendered Christmas tree with bright, vibrant colors in a minimalistic 
 Featuring simple, rounded shapes, soft lighting, and a cheerful festive atmosphere on a clean background.
 ```
 
-![圣诞树](images/generated_image_5.png)
+![圣诞树](https://z1.zve.cn/tutorial/llm-basics/generated_image_5.png)
 
 ### 6. 礼物盒（迪士尼风格）
 
@@ -229,7 +229,7 @@ Designed with smooth, rounded edges, soft lighting, and a festive, minimalistic 
 set against a clean background.
 ```
 
-![礼物盒](images/generated_image_6.png)
+![礼物盒](https://z1.zve.cn/tutorial/llm-basics/generated_image_6.png)
 
 ## 提示词编写技巧
 

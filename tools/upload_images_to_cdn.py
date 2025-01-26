@@ -70,99 +70,114 @@ class ImageUploader:
             print(f"上传出错: {e}")
             return None
 
-def process_markdown_file(file_path, uploader):
+def process_markdown_file(markdown_path, uploader):
     """处理单个markdown文件"""
-    print(f"\n处理文件: {file_path}")
+    print(f"\n处理文件: {markdown_path}")
     
-    with open(file_path, 'r', encoding='utf-8') as f:
+    with open(markdown_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
     # 创建备份
-    backup_path = f"{file_path}.bak"
+    backup_path = f"{markdown_path}.bak"
     with open(backup_path, 'w', encoding='utf-8') as f:
         f.write(content)
     print(f"创建备份: {backup_path}")
 
-    # 查找所有图片链接
-    pattern = r'!\[([^\]]*)\]\(([^)]+)\)'
-    matches = re.finditer(pattern, content)
+    # 获取markdown文件的基础目录
+    base_dir = os.path.dirname(os.path.abspath(markdown_path))
+
+    # 查找所有图片和音频链接
+    image_pattern = r'!\[([^\]]*)\]\(([^)]+)\)'
+    audio_pattern = r'🔊 \[([^\]]*)\]\(([^)]+)\)'
     
+    # 处理图片
+    matches = re.finditer(image_pattern, content)
     uploaded_count = 0
     for match in matches:
-        alt_text, image_path = match.groups()
+        alt_text, file_path = match.groups()
         
-        # 如果是本地图片路径
-        if not image_path.startswith(('http://', 'https://')):
+        # 如果是本地文件路径
+        if not file_path.startswith(('http://', 'https://')):
             # 转换为绝对路径
-            if image_path.startswith('./'):
-                image_path = image_path[2:]
-            abs_image_path = os.path.join(os.path.dirname(file_path), image_path)
+            if file_path.startswith('./'):
+                file_path = file_path[2:]
+            abs_file_path = os.path.normpath(os.path.join(base_dir, file_path))
             
             # 检查文件是否存在
-            if not os.path.exists(abs_image_path):
-                print(f"✗ 文件不存在: {abs_image_path}")
-                continue
-                
-            # 上传图片
-            print(f"上传图片: {abs_image_path}")
-            cdn_url = uploader.upload_file(abs_image_path, file_path)  # 传入markdown文件路径以获取教程名称
-            if cdn_url:
-                content = content.replace(match.group(0), f'![{alt_text}]({cdn_url})')
-                print(f"✓ 成功上传: {cdn_url}")
-                uploaded_count += 1
-        else:
-            # 对于已经是CDN链接的图片，检查是否需要更新文件名
-            if 'z1.zve.cn/tutorial/images/' in image_path:
-                # 获取本地对应的图片
-                old_filename = image_path.split('/')[-1]
-                if old_filename.startswith(('fee74e00', '4f6cbc99', '87986183', '4c7a2ebb', '00cca07c', 'e1a68097', '0cb9fcf7', '031c1dd1')):
-                    # 根据alt_text找到对应的本地文件
-                    local_files = [f for f in os.listdir(os.path.join(os.path.dirname(file_path), 'images')) if f.endswith('.png')]
-                    for local_file in local_files:
-                        if alt_text.replace(' ', '-').lower() in local_file.lower():
-                            local_image_path = os.path.join(os.path.dirname(file_path), 'images', local_file)
-                            print(f"更新图片: {local_image_path}")
-                            cdn_url = uploader.upload_file(local_image_path, file_path)
-                            if cdn_url:
-                                content = content.replace(match.group(0), f'![{alt_text}]({cdn_url})')
-                                print(f"✓ 成功更新: {cdn_url}")
-                                uploaded_count += 1
-                            break
+            if os.path.exists(abs_file_path):
+                # 上传到七牛
+                cdn_url = uploader.upload_file(abs_file_path, markdown_path)
+                if cdn_url:
+                    # 替换markdown中的链接
+                    content = content.replace(f'![{alt_text}]({file_path})', f'![{alt_text}]({cdn_url})')
+                    uploaded_count += 1
+                    print(f"✓ 上传成功: {file_path} -> {cdn_url}")
+            else:
+                print(f"× 文件不存在: {abs_file_path}")
+    
+    # 处理音频
+    matches = re.finditer(audio_pattern, content)
+    for match in matches:
+        alt_text, file_path = match.groups()
+        
+        # 如果是本地文件路径
+        if not file_path.startswith(('http://', 'https://')):
+            # 转换为绝对路径
+            if file_path.startswith('./'):
+                file_path = file_path[2:]
+            abs_file_path = os.path.normpath(os.path.join(base_dir, file_path))
+            
+            # 检查文件是否存在
+            if os.path.exists(abs_file_path):
+                # 上传到七牛
+                cdn_url = uploader.upload_file(abs_file_path, markdown_path)
+                if cdn_url:
+                    # 替换markdown中的链接
+                    content = content.replace(f'🔊 [{alt_text}]({file_path})', f'🔊 [{alt_text}]({cdn_url})')
+                    uploaded_count += 1
+                    print(f"✓ 上传成功: {file_path} -> {cdn_url}")
+            else:
+                print(f"× 文件不存在: {abs_file_path}")
 
+    # 如果有文件被上传，保存更新后的内容
     if uploaded_count > 0:
-        # 写入更新后的内容
-        print(f"更新文件: {file_path}")
-        with open(file_path, 'w', encoding='utf-8') as f:
+        with open(markdown_path, 'w', encoding='utf-8') as f:
             f.write(content)
-
-    print(f"\n完成! 共处理 {uploaded_count} 张图片\n")
+        print(f"\n✓ 更新了 {uploaded_count} 个文件链接")
+    else:
+        print("\n没有需要上传的文件")
+        # 删除备份
+        os.remove(backup_path)
 
 def main():
-    parser = argparse.ArgumentParser(description='上传Markdown文件中的图片到七牛云CDN')
-    parser.add_argument('path', help='Markdown文件路径或目录路径')
-    parser.add_argument('--ak', help='七牛云 Access Key')
-    parser.add_argument('--sk', help='七牛云 Secret Key')
+    parser = argparse.ArgumentParser(description='上传markdown文件中的图片和音频到七牛云')
+    parser.add_argument('markdown_files', nargs='+', help='要处理的markdown文件路径')
+    parser.add_argument('--access-key', help='七牛云 Access Key')
+    parser.add_argument('--secret-key', help='七牛云 Secret Key')
     parser.add_argument('--bucket', help='七牛云 Bucket 名称')
     parser.add_argument('--domain', help='七牛云域名')
     
     args = parser.parse_args()
     
-    # 初始化上传器
-    uploader = ImageUploader(args.ak, args.sk, args.bucket, args.domain)
+    # 创建上传器实例
+    uploader = ImageUploader(
+        access_key=args.access_key,
+        secret_key=args.secret_key,
+        bucket_name=args.bucket,
+        domain=args.domain
+    )
     
-    # 处理文件或目录
-    if os.path.isfile(args.path):
-        if args.path.endswith('.md'):
-            process_markdown_file(args.path, uploader)
-    elif os.path.isdir(args.path):
-        total_count = 0
-        for md_file in glob.glob(os.path.join(args.path, '**/*.md'), recursive=True):
-            process_markdown_file(md_file, uploader)
-            total_count += 1
-        print(f"\n完成! 共处理 {total_count} 张图片")
-    else:
-        print("错误: 指定的路径不存在")
-        sys.exit(1)
+    # 处理每个markdown文件
+    for md_file in args.markdown_files:
+        if not os.path.exists(md_file):
+            print(f"文件不存在: {md_file}")
+            continue
+            
+        if not md_file.endswith('.md'):
+            print(f"不是markdown文件: {md_file}")
+            continue
+            
+        process_markdown_file(md_file, uploader)
 
 if __name__ == '__main__':
     main()
