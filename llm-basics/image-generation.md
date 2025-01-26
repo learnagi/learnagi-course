@@ -7,7 +7,7 @@ estimated_minutes: 25
 language: "zh-CN"
 ---
 
-![Image Generation](images/image-generation/header.png)
+![Image Generation](images/header.png)
 *文字化图，创意无限*
 
 # 文生图能力
@@ -165,72 +165,329 @@ edited_url = generator.edit_image("landscape.png", "mask.png", edit_prompt)
 print(f"Edited image: {edited_url}")
 ```
 
+## 图像生成示例
+
+### 1. 现代工作空间（扁平设计）
+
+**提示词**：
+```
+Digital illustration in Flat Design style of a modern workspace with a desk, laptop, and plants, 
+using clean lines and bold colors. The scene is well-lit with natural lighting from a large window. 
+Minimalist aesthetic with a color palette of soft blues and warm grays.
+```
+
+![现代工作空间](images/generated_image_1.png)
+
+### 2. 智能城市（等距风格）
+
+**提示词**：
+```
+Isometric illustration of a smart city concept with modern buildings, flying vehicles, 
+and green energy solutions. Clean geometric shapes, consistent 120-degree angles, 
+bold color palette with tech-inspired blues and whites.
+```
+
+![智能城市](images/generated_image_2.png)
+
+### 3. 日本花园（水彩风格）
+
+**提示词**：
+```
+Watercolor illustration of a serene Japanese garden in spring, 
+with blooming cherry blossoms, a small wooden bridge over a koi pond, 
+and traditional stone lanterns. Soft, flowing colors with visible brush strokes.
+```
+
+![日本花园](images/generated_image_3.png)
+
+### 4. 数据安全仪表盘
+
+**提示词**：
+```
+Here is the flat illustration of a professional discussing data security on a futuristic dashboard, 
+featuring a gradient color scheme of deep blue, soft purple, and white highlights.
+```
+
+![数据安全仪表盘](images/generated_image_4.png)
+
+### 5. 圣诞树（迪士尼风格）
+
+**提示词**：
+```
+A cute 3D-rendered Christmas tree with bright, vibrant colors in a minimalistic Disney-inspired style. 
+Featuring simple, rounded shapes, soft lighting, and a cheerful festive atmosphere on a clean background.
+```
+
+![圣诞树](images/generated_image_5.png)
+
+### 6. 礼物盒（迪士尼风格）
+
+**提示词**：
+```
+A cute 3D-rendered gift box with bright, playful colors in a simple, Disney-inspired style. 
+Designed with smooth, rounded edges, soft lighting, and a festive, minimalistic appearance, 
+set against a clean background.
+```
+
+![礼物盒](images/generated_image_6.png)
+
+## 提示词编写技巧
+
+从上面的示例中，我们可以总结出一些编写高质量提示词的技巧：
+
+1. **明确风格**：在提示词中明确指定想要的艺术风格，如扁平设计、等距风格、水彩风格等。
+
+2. **详细描述视觉元素**：
+   - 形状：如"clean lines"、"geometric shapes"、"rounded edges"
+   - 颜色：如"soft blues"、"warm grays"、"deep blue, soft purple"
+   - 光照：如"well-lit"、"soft lighting"
+   - 氛围：如"minimalist aesthetic"、"cheerful festive atmosphere"
+
+3. **指定技术细节**：
+   - 渲染方式：如"3D-rendered"
+   - 特定角度：如"120-degree angles"
+   - 背景要求：如"clean background"
+
+4. **参考知名风格**：如"Disney-inspired style"可以快速传达特定的视觉风格。
+
+5. **空间布局**：明确说明主要元素的位置和关系，如"in the bottom right corner"、"set against"等。
+
+## 代码实现
+
+完整的代码实现请参考 `generate_images.py` 文件。主要步骤包括：
+
+1. 初始化 OpenAI 客户端
+2. 准备详细的提示词
+3. 调用 DALL-E 3 API 生成图像
+4. 保存生成的图像到本地
+
+关键代码片段：
+
+```python
+def generate_image(prompt: str, size: str = "1024x1024") -> str:
+    """生成图像并返回URL"""
+    try:
+        response = requests.post(
+            f"{self.api_base}/images/generations",
+            headers=self.headers,
+            json={
+                "model": "dall-e-3",
+                "prompt": prompt,
+                "n": 1,
+                "size": size,
+                "quality": "standard"
+            }
+        )
+        
+        if response.status_code != 200:
+            print(f"API错误: {response.text}")
+            return None
+            
+        return response.json()['data'][0]['url']
+        
+    except Exception as e:
+        print(f"生成图像时出错: {str(e)}")
+        return None
+```
+
+## 注意事项
+
+1. 提示词要尽可能详细和具体
+2. 指定清晰的视觉风格和技术要求
+3. 注意图像的分辨率和质量设置
+4. 处理好 API 调用的错误情况
+5. 及时保存生成的图像，因为图像 URL 是临时的
+
 ## 3. 提示词工程
 ### 3.1 提示词结构
 一个好的图像生成提示词应包含：
-1. 主体描述
-2. 场景环境
-3. 风格指定
-4. 技术参数
-5. 细节补充
+1. 主体描述（Subject）：要生成的主要对象
+2. 场景环境（Environment）：背景和环境描述
+3. 风格指定（Style）：艺术风格和视觉效果
+4. 技术参数（Technical）：相机角度、光照等
+5. 细节补充（Details）：额外的细节要求
 
-### 3.2 提示词模板
-```python
-def create_image_prompt(
-    subject: str,
-    environment: str = "",
-    style: str = "",
-    lighting: str = "",
-    camera: str = "",
-    additional_details: str = ""
-) -> str:
-    """创建图像生成提示词
-    
-    Args:
-        subject (str): 主体描述
-        environment (str): 环境描述
-        style (str): 风格描述
-        lighting (str): 光照描述
-        camera (str): 相机参数
-        additional_details (str): 额外细节
-        
-    Returns:
-        str: 格式化的提示词
-    """
-    prompt_parts = [subject]
-    
-    if environment:
-        prompt_parts.append(f"Environment: {environment}")
-    if style:
-        prompt_parts.append(f"Style: {style}")
-    if lighting:
-        prompt_parts.append(f"Lighting: {lighting}")
-    if camera:
-        prompt_parts.append(f"Camera: {camera}")
-    if additional_details:
-        prompt_parts.append(f"Additional details: {additional_details}")
-    
-    return ", ".join(prompt_parts)
+### 3.2 常用提示词模板
+#### 3.2.1 场景类
+1. 现代工作空间
+```
+Digital illustration in Flat Design style of a modern workspace with a desk, laptop, and plants, 
+using clean lines and bold colors. The scene is well-lit with natural lighting from a large window. 
+Minimalist aesthetic with a color palette of soft blues and warm grays.
 ```
 
-## 4. 最佳实践
-### 4.1 提示词技巧
-1. 使用具体的描述词
-2. 指定清晰的风格
-3. 添加环境细节
-4. 注意构图要素
+2. 自然风景
+```
+A breathtaking landscape photograph of a mountain range at golden hour, captured with a wide-angle lens. Dramatic clouds catch the warm sunlight, creating a stunning array of orange and purple hues. Sharp details in the foreground rocks and a silky smooth lake reflection. Shot at f/11, ISO 100.
+```
 
-### 4.2 图像质量优化
-1. 选择合适的尺寸
-2. 调整生成参数
-3. 使用高质量设置
-4. 考虑构图规则
+3. 建筑设计
+```
+Architectural visualization of a contemporary minimalist house, featuring clean geometric shapes and large glass windows. The structure seamlessly integrates with its natural surroundings. Rendered in a photorealistic style with careful attention to material textures and environmental lighting.
+```
 
-### 4.3 注意事项
-1. 内容安全审查
-2. 版权考虑
-3. 成本控制
-4. 质量验证
+4. 产品展示
+```
+Professional product photography of a sleek smartphone on a white background. Top-down view with soft, even lighting and subtle shadows. The device displays a vibrant app interface. Captured with a macro lens to highlight the premium materials and craftsmanship.
+```
+
+#### 3.2.2 风格类
+1. 扁平设计
+```
+Flat design illustration with:
+- Clean, minimalist shapes
+- Bold, solid colors
+- Simple geometric patterns
+- No gradients or shadows
+- 2D perspective
+Style: Modern and minimal
+```
+
+2. 等距风格
+```
+Isometric design featuring:
+- 3D objects at 120-degree angles
+- Precise geometric shapes
+- Consistent perspective
+- Bold color palette
+- Clear outlines
+Style: Technical and architectural
+```
+
+3. 水彩风格
+```
+Watercolor illustration with:
+- Soft, flowing colors
+- Visible brush strokes
+- Color bleeding effects
+- Natural paper texture
+- Organic shapes
+Style: Artistic and expressive
+```
+
+### 3.3 提示词增强技巧
+1. 风格强化
+```
+Add style-specific keywords:
+- Photorealistic: "hyperrealistic, 8k, detailed textures"
+- Artistic: "impressionist style, vibrant brushstrokes"
+- Digital: "vector art, clean lines, gradient colors"
+```
+
+2. 光照描述
+```
+Enhance lighting details:
+- Natural: "golden hour sunlight, soft shadows"
+- Studio: "three-point lighting setup, rim light"
+- Dramatic: "high contrast, dramatic shadows"
+```
+
+3. 构图要素
+```
+Specify composition:
+- Rule of thirds
+- Leading lines
+- Symmetrical balance
+- Dynamic perspective
+- Depth of field
+```
+
+## 4. 高级技巧
+### 4.1 图像质量优化
+1. 分辨率和细节
+- 使用"high resolution"、"8K"等关键词
+- 指定"detailed"、"intricate"等描述
+- 添加"sharp focus"、"crisp details"
+
+2. 光照和氛围
+- 描述光源类型和方向
+- 指定阴影的软硬程度
+- 添加环境光效果
+
+3. 材质和纹理
+- 详细描述表面特性
+- 指定反射和透明度
+- 添加微观细节
+
+### 4.2 常见问题解决
+1. 图像模糊
+```
+添加以下关键词：
+- "sharp focus"
+- "crystal clear"
+- "4K resolution"
+- "detailed"
+```
+
+2. 构图不佳
+```
+指定构图要素：
+- "centered composition"
+- "rule of thirds"
+- "balanced layout"
+- "dynamic angle"
+```
+
+3. 风格不一致
+```
+统一风格描述：
+- 明确艺术风格
+- 保持一致的渲染方式
+- 指定参考作品
+```
+
+### 4.3 进阶技巧
+1. 负面提示词
+- 指定不想要的元素
+- 避免特定的风格
+- 排除不需要的效果
+
+2. 权重控制
+- 使用括号增加权重 (keyword)
+- 使用多重括号提高优先级 ((keyword))
+- 使用数字设置具体权重 (keyword:1.5)
+
+3. 组合提示词
+```python
+def combine_prompts(*prompts, weights=None):
+    """组合多个提示词
+    
+    Args:
+        prompts: 提示词列表
+        weights: 对应的权重列表
+    
+    Returns:
+        str: 组合后的提示词
+    """
+    if weights is None:
+        weights = [1.0] * len(prompts)
+    
+    weighted_prompts = [
+        f"({prompt}:{weight})"
+        for prompt, weight in zip(prompts, weights)
+    ]
+    
+    return ", ".join(weighted_prompts)
+```
+
+### 4.4 工作流程优化
+1. 迭代生成
+- 从简单提示词开始
+- 逐步添加细节
+- 保存成功的提示词
+- 记录失败的尝试
+
+2. 批量生成
+- 准备提示词变体
+- 使用不同参数
+- 比较结果
+- 选择最佳输出
+
+3. 质量控制
+- 建立评估标准
+- 使用检查清单
+- 收集用户反馈
+- 持续优化流程
 
 ## 练习与作业
 1. 基础练习：生成不同风格的风景图

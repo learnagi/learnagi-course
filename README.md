@@ -2,10 +2,10 @@
 title: "AGI大模型完全指南"
 slug: "agi"
 description: "从零开始学习人工智能和大语言模型开发，掌握AI应用开发的核心技能"
-author: "LearnAGI Team"
+author: "AGI课程组"
 status: "published"
-created_at: "2024-01-01"
-updated_at: "2025-01-26"
+created_at: "2024-01-26"
+updated_at: "2024-01-26"
 ---
 
 # AGI大模型完全指南
