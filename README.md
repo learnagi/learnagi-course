@@ -5,7 +5,7 @@ description: "从零开始学习人工智能和大语言模型开发，掌握AI�
 author: "LearnAGI Team"
 status: "published"
 created_at: "2024-01-01"
-updated_at: "2024-03-19"
+updated_at: "2025-01-26"
 ---
 
 # AGI大模型完全指南
@@ -18,46 +18,46 @@ updated_at: "2024-03-19"
 ## 目录
 
 ### 1. 大模型开发学习指南 (getting-started)
-- [认识大模型开发](https://www.agi01.com/course/agi/getting-started/intro-llm)
+- <a href="https://www.agi01.com/course/agi/getting-started/intro-llm" target="_blank">认识大模型开发</a>
   - 大模型技术革命与机遇
   - 大模型能做什么
   - 应用场景与案例
   - 发展前景与挑战
 
-- [学习路径规划](https://www.agi01.com/course/agi/getting-started/learning-path)
+- <a href="https://www.agi01.com/course/agi/getting-started/learning-path" target="_blank">学习路径规划</a>
   - 大模型开发技能图谱
   - 从入门到进阶
   - 学习周期规划
   - 重点难点指南
 
-- [开发环境搭建](https://www.agi01.com/course/agi/getting-started/environment-setup)
+- <a href="https://www.agi01.com/course/agi/getting-started/environment-setup" target="_blank">开发环境搭建</a>
   - 硬件环境要求
   - API 与模型选择
   - 开发工具配置
   - 网络环境准备
 
-- [高效学习方法](https://www.agi01.com/course/agi/getting-started/learning-methods)
+- <a href="https://www.agi01.com/course/agi/getting-started/learning-methods" target="_blank">高效学习方法</a>
   - 零基础入门指南
   - 概念理解方法
   - 实践驱动学习
   - 常见问题解答
 
-- [学习支持体系](https://www.agi01.com/course/agi/getting-started/support-system)
+- <a href="https://www.agi01.com/course/agi/getting-started/support-system" target="_blank">学习支持体系</a>
   - 技术社区指南
   - 学习资源推荐
   - 问题解决渠道
   - 项目实践指导
 
 ### 2. Python 编程基础 (python-basics)
-- [环境搭建](https://www.agi01.com/course/agi/python-basics/environment-setup)
+- <a href="https://www.agi01.com/course/agi/python-basics/environment-setup" target="_blank">环境搭建</a>
   - Python 编程入门
   - 安装 Anaconda 与 Jupyter Lab
-- [基础语法](https://www.agi01.com/course/agi/python-basics/basic-syntax)
+- <a href="https://www.agi01.com/course/agi/python-basics/basic-syntax" target="_blank">基础语法</a>
   - 变量与数据类型
   - 条件语句与循环
   - 函数定义与使用
   - 列表、元组和字典
-- [进阶应用](https://www.agi01.com/course/agi/python-basics/advanced-usage)
+- <a href="https://www.agi01.com/course/agi/python-basics/advanced-usage" target="_blank">进阶应用</a>
   - API 交互基础
   - Python 数据分析
   - 测试与调试
@@ -162,9 +162,9 @@ updated_at: "2024-03-19"
 - [职业规划](https://www.agi01.com/course/agi/career/planning)
 
 ### 17. 项目实战 (projects)
-- [实战项目](https://www.agi01.com/course/agi/projects/practical)
-- [项目展示](https://www.agi01.com/course/agi/projects/showcase)
-- [结业认证](https://www.agi01.com/course/agi/projects/certification)
+- <a href="https://www.agi01.com/course/agi/projects/practical" target="_blank">实战项目</a>
+- <a href="https://www.agi01.com/course/agi/projects/showcase" target="_blank">项目展示</a>
+- <a href="https://www.agi01.com/course/agi/projects/certification" target="_blank">结业认证</a>
 
 ## 学习资源
 - 在线问答支持
@@ -186,3 +186,14 @@ updated_at: "2024-03-19"
 
 ## 许可证
 本课程采用 MIT 许可证。详情请查看 [LICENSE](LICENSE) 文件。
+
+## 支持我们
+- <a href="https://github.com/learnagi/learnagi-course" target="_blank">在 GitHub 上 star 本项目</a>
+- 分享给更多对大模型 AGI 开发感兴趣的朋友
+- 在学习社区中积极交流讨论
+- <a href="https://github.com/learnagi/learnagi-course/issues" target="_blank">通过 Issues 提出建议</a>
+
+## 获取更新
+- <a href="https://github.com/learnagi/learnagi-course" target="_blank">Watch GitHub 仓库</a>获取最新动态
+- <a href="https://github.com/learnagi/learnagi-course/releases" target="_blank">关注项目 Releases</a>了解版本更新
+- 加入学习社区参与讨论
