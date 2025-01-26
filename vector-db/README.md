@@ -1,42 +1,13 @@
-#!/bin/bash
-
-# 创建主要章节目录
-chapters=(
-    "getting-started"
-    "python-basics"
-    "llm-basics"
-    "prompt-engineering"
-    "ai-coding"
-    "vector-db"
-    "langchain"
-    "agents"
-    "multimodal"
-    "fine-tuning"
-    "ai-ethics"
-    "ai-web"
-    "enterprise"
-    "multi-model"
-    "evaluation"
-    "career"
-    "projects"
-)
-
-# 创建基本目录结构
-for chapter in "${chapters[@]}"; do
-    mkdir -p "$chapter"
-    
-    # 创建章节的 README.md
-    cat > "$chapter/README.md" << EOF
 ---
-title: "$(tr '[:lower:]' '[:upper:]' <<< ${chapter:0:1})${chapter:1}"
-slug: "${chapter}"
+title: "Vector-db"
+slug: "vector-db"
 description: "本章正在精心备课中，敬请期待"
 status: "draft"
 created_at: "2024-03-19"
 updated_at: "2024-03-19"
 ---
 
-# $(tr '[:lower:]' '[:upper:]' <<< ${chapter:0:1})${chapter:1}
+# Vector-db
 
 🚧 本章节正在精心备课中...
 
@@ -65,9 +36,3 @@ updated_at: "2024-03-19"
 - 关注项目 [Releases](https://github.com/learnagi/learnagi-course/releases) 了解版本更新
 - 加入学习社区参与讨论
 
-EOF
-
-    echo "Created $chapter/README.md"
-done
-
-echo "Directory structure created successfully!" 
