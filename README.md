@@ -63,18 +63,35 @@ updated_at: "2025-01-26"
   - 测试与调试
 
 ### 3. 大语言模型（LLM）入门 (llm-basics)
-- [LLM 基础](https://www.agi01.com/course/agi/llm-basics/fundamentals)
-  - 从语言模型到大语言模型
-  - 演变：N-Gram、RNN、Transformer
-  - 训练效率：监督学习 vs 半监督学习
-- [主流模型](https://www.agi01.com/course/agi/llm-basics/popular-models)
-  - GPT-4、Claude、Gemini、LLaMA 对比
-  - 生成式 AI 发展
-  - 评估 LLM 输出
-- [实践应用](https://www.agi01.com/course/agi/llm-basics/practical-applications)
-  - 本地部署 vs API 使用
-  - API 账户和密钥管理
-  - 上下文长度与标记化
+- <a href="https://www.agi01.com/course/agi/llm-basics/introduction" target="_blank">LLM入门基础</a>
+  - 什么是大语言模型
+  - LLM能做什么
+  - 基本工作原理
+  - 常见应用场景
+
+- <a href="https://www.agi01.com/course/agi/llm-basics/popular-models" target="_blank">主流模型介绍</a>
+  - GPT-4的特点和优势
+  - Claude的特色功能
+  - Gemini的使用场景
+  - 如何选择合适的模型
+
+- <a href="https://www.agi01.com/course/agi/llm-basics/token-basics" target="_blank">Token基础知识</a>
+  - Token是什么
+  - 如何计算Token
+  - 上下文窗口简介
+  - 常见Token限制
+
+- <a href="https://www.agi01.com/course/agi/llm-basics/api-usage" target="_blank">API使用入门</a>
+  - 如何申请API密钥
+  - 发送第一个API请求
+  - 基础参数说明
+  - 常见错误处理
+
+- <a href="https://www.agi01.com/course/agi/llm-basics/cost-optimization" target="_blank">成本优化指南</a>
+  - API计费说明
+  - 成本控制技巧
+  - 批量处理策略
+  - 预算规划建议
 
 ### 4. 提示词工程与优化 (prompt-engineering)
 - [基础概念](https://www.agi01.com/course/agi/prompt-engineering/basic-concepts)
