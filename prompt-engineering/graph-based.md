@@ -1,6 +1,6 @@
 ---
 title: "基于图的提示"
-slug: "prompt-engineering/graph-based"
+slug: "graph-based"
 description: "学习基于图的提示方法，提升提示系统的可扩展性和可维护性"
 ---
 

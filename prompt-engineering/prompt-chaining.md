@@ -1,6 +1,6 @@
 ---
 title: "链式提示"
-slug: "prompt-engineering/prompt-chaining"
+slug: "prompt-chaining"
 description: "学习如何使用链式提示技术，将复杂任务分解为多个子任务，提高模型的性能和可靠性"
 ---
 

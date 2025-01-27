@@ -1,6 +1,6 @@
 ---
 title: "主动提示学习"
-slug: "prompt-engineering/active-prompt"
+slug: "active-prompt"
 description: "探索主动提示学习（Active-Prompt）技术，通过不确定性采样优化思维链示例"
 ---
 

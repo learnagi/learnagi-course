@@ -1,6 +1,6 @@
 ---
 title: "检索增强生成"
-slug: "prompt-engineering/rag"
+slug: "rag"
 description: "学习如何使用检索增强生成（RAG）技术，通过结合外部知识来提高模型回答的准确性和可靠性"
 ---
 

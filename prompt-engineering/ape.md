@@ -1,6 +1,6 @@
 ---
 title: "自动提示工程师"
-slug: "prompt-engineering/ape"
+slug: "ape"
 description: "探索自动提示工程师（APE）技术，学习如何自动优化和生成高质量提示词"
 ---
 

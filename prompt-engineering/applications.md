@@ -1,6 +1,6 @@
 ---
 title: "提示应用"
-slug: "prompt-engineering/applications"
+slug: "applications"
 description: "学习提示工程在各个领域的实际应用"
 ---
 

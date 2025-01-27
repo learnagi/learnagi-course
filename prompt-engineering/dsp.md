@@ -1,6 +1,6 @@
 ---
 title: "方向性刺激提示"
-slug: "prompt-engineering/dsp"
+slug: "dsp"
 description: "探索方向性刺激提示（DSP）技术，通过强化学习优化提示词生成"
 ---
 

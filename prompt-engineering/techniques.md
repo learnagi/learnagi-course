@@ -1,6 +1,6 @@
 ---
 title: "提示技术"
-slug: "prompt-engineering/techniques"
+slug: "techniques"
 description: "掌握各种高级提示技术的原理和应用"
 ---
 

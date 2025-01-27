@@ -1,6 +1,6 @@
 ---
 title: "生成知识提示"
-slug: "prompt-engineering/knowledge-generation"
+slug: "knowledge-generation"
 description: "学习如何利用生成知识提示技术来增强模型的推理能力"
 ---
 

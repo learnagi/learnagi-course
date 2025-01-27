@@ -1,6 +1,6 @@
 ---
 title: "自我一致性提示"
-slug: "prompt-engineering/self-consistency"
+slug: "self-consistency"
 description: "学习自我一致性提示技术，提高模型推理的准确性和可靠性"
 ---
 
