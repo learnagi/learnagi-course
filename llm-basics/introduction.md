@@ -1,17 +1,14 @@
 ---
-title: "大语言模型：入门第一课"
+title: "大语言模型入门"
 slug: "introduction"
-sequence: 3.1
+sequence: 1
 description: "零基础了解大语言模型，理解ChatGPT背后的技术原理"
-is_published: false
-estimated_minutes: 45
-language: "zh-CN"
 status: "draft"
-created_at: "2024-03-19"
-updated_at: "2024-03-19"
+created_at: "2024-01-26"
+updated_at: "2024-01-26"
 ---
 
-![大语言模型入门](./images/llm-introduction.png)
+![Header Image](https://z1.zve.cn/tutorial/llm-basics/llm-introduction.png)
 *让我们一起揭开AI对话的神秘面纱*
 
 # 大语言模型：入门第一课

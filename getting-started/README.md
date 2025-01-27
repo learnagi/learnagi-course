@@ -1,10 +1,11 @@
 ---
-title: "Getting-started"
+title: "大模型开发学习指南"
 slug: "getting-started"
-description: "本章正在精心备课中，敬请期待"
-status: "draft"
-created_at: "2024-03-19"
-updated_at: "2024-03-19"
+sequence: 1
+description: "从零开始规划你的大模型开发学习路径，掌握核心技能图谱"
+status: "published"
+created_at: "2024-01-26"
+updated_at: "2024-01-26"
 ---
 
 # Getting-started
@@ -35,4 +36,3 @@ updated_at: "2024-03-19"
 - Watch [GitHub 仓库](https://github.com/learnagi/learnagi-course) 获取最新动态
 - 关注项目 [Releases](https://github.com/learnagi/learnagi-course/releases) 了解版本更新
 - 加入学习社区参与讨论
-
