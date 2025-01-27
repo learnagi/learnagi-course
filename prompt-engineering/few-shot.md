@@ -4,6 +4,8 @@ slug: "prompt-engineering/few-shot"
 description: "学习少样本提示的基本概念和应用技巧"
 ---
 
+![Header Image](https://z1.zve.cn/tutorial/prompt-engineering/few-shot_header.png)
+
 # 少样本提示
 
 少样本提示（Few-shot Prompting）是一种通过在提示中提供示例来引导模型完成任务的技术。当零样本提示无法很好地处理复杂任务时，少样本提示通过提供具体示例来提高模型的表现。
