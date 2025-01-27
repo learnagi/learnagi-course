@@ -94,15 +94,40 @@ updated_at: "2024-01-26"
   - 预算规划建议
 
 ### 4. 提示词工程与优化 (prompt-engineering)
-- [基础概念](https://www.agi01.com/course/agi/prompt-engineering/basic-concepts)
-  - 提示词工程概述
-  - NLP 基础知识
-- [技术路线](https://www.agi01.com/course/agi/prompt-engineering/technical-approaches)
-  - 提示词工程 vs 微调 vs RAG
-  - ChatGPT 集成
-- [优化实践](https://www.agi01.com/course/agi/prompt-engineering/optimization)
-  - 最佳实践指南
-  - 实践练习与案例
+- [提示工程基础](https://www.agi01.com/course/agi/prompt-engineering/basics)
+  - 大语言模型设置
+  - 基本概念
+  - 提示词要素
+  - 设计提示的通用技巧
+
+- [提示技术](https://www.agi01.com/course/agi/prompt-engineering/techniques)
+  - 零样本提示
+  - 少样本提示
+  - 链式思考（CoT）提示
+  - 自我一致性
+  - 生成知识提示
+  - Prompt Chaining
+  - 思维树（ToT）
+  - 检索增强生成（RAG）
+  - 自动提示工具使用（APT）
+  - 自动提示工程师
+  - Active-Prompt
+  - 方向性制御提示
+  - Program-Aided Language Models
+  - ReAct组合
+  - Reflexion
+  - 多模态思维链提示方法
+
+- [基于图的提示](https://www.agi01.com/course/agi/prompt-engineering/graph-based)
+  - meta-prompting
+  - 提示图谱
+  - 提示模板
+
+- [提示应用](https://www.agi01.com/course/agi/prompt-engineering/applications)
+  - 生成数据
+  - 代码生成
+  - 文本分析
+  - 对话系统
 
 ### 5. AI 编程 (ai-coding)
 - [代码生成](https://www.agi01.com/course/agi/ai-coding/code-generation)
