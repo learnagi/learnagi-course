@@ -1,6 +1,6 @@
 ---
 title: "链式思考提示"
-slug: "prompt-engineering/cot"
+slug: "cot"
 description: "学习链式思考（Chain-of-Thought）提示的基本概念和应用技巧"
 ---
 

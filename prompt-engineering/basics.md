@@ -1,7 +1,11 @@
 ---
-title: "提示工程基础"
+title: "Prompt 提示工程基础"
 slug: "basics"
-description: "学习提示工程的基本概念和通用技巧"
+sequence: 1
+description: "学习 Prompt 的核心概念和基本要素，掌握与 AI 高效沟通的技巧，提高 AI 输出质量"
+is_published: true
+estimated_minutes: 20
+language: "zh-CN"
 ---
 
 ![Header Image](https://z1.zve.cn/tutorial/prompt-engineering/basics_header.png)
