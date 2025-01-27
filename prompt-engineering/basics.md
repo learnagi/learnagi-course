@@ -4,8 +4,6 @@ slug: "prompt-engineering/basics"
 description: "学习提示工程的基本概念和通用技巧"
 ---
 
-![Header Image](https://z1.zve.cn/tutorial/prompt-engineering/basics_header.png)
-
 # 提示工程基础
 
 ## 大语言模型设置
@@ -1067,5 +1065,3 @@ async def process_multiple_requests(prompts: List[str]):
 5. 并发请求控制
 
 这些实践可以帮助开发者构建更稳定、安全和高效的应用。建议在实际项目中根据具体需求选择和调整这些代码。
-
-```
