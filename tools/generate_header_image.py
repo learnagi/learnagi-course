@@ -27,24 +27,25 @@ class HeaderImageGenerator:
     def generate_header_image(self, title, content, doc_path, brand_logo_text="AGI01"):
         """生成课程封面图片"""
         prompt = f"""
-        Flat illustration of {content} concepts presented on a modern dashboard interface, 
-        designed for an educational course cover titled "{title}" with a balanced 16:9 layout. 
-        The design features a vibrant blue color scheme with smooth gradients, 
-        sleek UI elements, and a clean white background. 
+        Flat illustration of a professional discussing {content} on a futuristic dashboard interface, 
+        utilizing a gradient color scheme of deep blue, soft purple, and neon blue highlights. 
+        The design features a sleek and modern layout with clean white elements, light gray accents, 
+        and a minimalistic background for the educational course titled "{title}".
         
         Key elements to include:
-        - Data visualization charts (line, bar, pie charts)
-        - Security icons (shield, lock, fingerprint)
-        - Network topology visualization
-        - Friendly 3D robot character analyzing data
+        - Interactive charts and data visualizations
+        - Security icons and dynamic UI components
+        - High-tech, professional atmosphere
         - {brand_logo_text} logo in top-left corner with modern typography
         
         Style requirements:
-        - Minimalist flat design
-        - Consistent blue color palette (#2A5CAA to #4A90E2 gradients)
-        - Subtle drop shadows for depth
+        - 16:9 layout with balanced composition
+        - Deep blue to soft purple gradient palette
+        - Neon blue accent highlights
+        - Clean white UI elements with light gray accents
+        - Minimalistic, futuristic design
         - 4K resolution quality
-        - Corporate but approachable tone
+        - Professional yet approachable tone
         """
         
         try:
