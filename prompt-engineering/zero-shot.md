@@ -1,10 +1,15 @@
 ---
 title: "零样本提示：无需示例的智能对话"
 slug: "zero-shot"
-description: "掌握零样本提示技术，让AI立即上手各类任务"
+sequence: 3
+description: "掌握零样本提示技术，让AI立即上手各类任务，无需提供示例即可获得高质量输出"
+is_published: true
+estimated_minutes: 25
+language: "zh-CN"
+permalink: "https://www.agi01.com/course/agi/prompt-engineering/zero-shot"
 ---
 
-![Header Image](images/zero-shot_header.png)
+![Header Image](https://z1.zve.cn/tutorial/prompt-engineering/zero-shot_header.png)
 
 ## 本节概要
 
@@ -436,9 +441,3 @@ prompt = """
    - 设计一个多步骤的任务处理流程
    - 创建自己的提示词模板库
    - 优化现有模板的效果
-
----
-📚 推荐阅读：
-- 《Prompt Engineering Guide》
-- 《Zero-shot Learning in Modern NLP》
-- 《Building LLM Applications》
