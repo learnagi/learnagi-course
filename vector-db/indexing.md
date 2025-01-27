@@ -13,6 +13,8 @@ header_image: "https://z1.zve.cn/tutorial/vector-db/indexing_header.png"
 
 # 向量数据库索引技术详解
 
+![向量数据库索引技术详解](https://z1.zve.cn/tutorial/vector-db/indexing_header.png)
+
 ## 为什么需要索引？🤔
 
 在向量数据库中，如果没有索引，查询时需要遍历所有向量计算相似度（暴力搜索），这在大规模数据集上是不可接受的。索引的目的是：
