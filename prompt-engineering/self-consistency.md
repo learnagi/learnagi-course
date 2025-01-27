@@ -4,6 +4,8 @@ slug: "prompt-engineering/self-consistency"
 description: "学习自我一致性提示技术，提高模型推理的准确性和可靠性"
 ---
 
+![Header Image](images/self-consistency_header.png)
+
 # 自我一致性提示
 
 自我一致性（Self-Consistency）是一种高级提示技术，旨在通过生成多个推理路径并选择最一致的答案来提高模型的推理准确性。这种方法特别适用于需要复杂推理的任务，如数学问题和逻辑分析。
