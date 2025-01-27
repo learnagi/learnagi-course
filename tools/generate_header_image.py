@@ -18,7 +18,7 @@ class HeaderImageGenerator:
     """教程题图生成器"""
     
     def __init__(self, api_key=None, api_base=None):
-        self.api_base = api_base or "https://api.openai.com/v1"
+        self.api_base = api_base or os.getenv('OPENAI_API_BASE', "https://api.openai.com/v1")
         self.headers = {
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json"
@@ -76,6 +76,7 @@ class HeaderImageGenerator:
                 return None
                 
             image_url = response_data['data'][0]['url']
+            print(f"获取到的图片URL: {image_url}")
             
             # 根据文档路径动态生成输出路径
             output_dir = os.path.dirname(doc_path)
@@ -86,7 +87,9 @@ class HeaderImageGenerator:
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
             
             # 下载并保存图片
-            self._download_image(image_url, output_path)
+            if not self._download_image(image_url, output_path):
+                print("下载图片失败")
+                return None
             
             # 更新文档中的图片引用
             self._update_documentation(filename, doc_path)
@@ -99,10 +102,39 @@ class HeaderImageGenerator:
 
     def _download_image(self, url: str, save_path: str):
         """下载图片并保存"""
-        response = requests.get(url)
-        with open(save_path, "wb") as f:
-            f.write(response.content)
-        print(f"图片已保存至: {save_path}")
+        try:
+            print(f"开始下载图片: {url}")
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()  # 检查响应状态
+            
+            # 检查内容类型
+            content_type = response.headers.get('content-type', '')
+            if not content_type.startswith('image/'):
+                print(f"警告：响应的内容类型不是图片: {content_type}")
+            
+            # 检查内容大小
+            content_length = len(response.content)
+            print(f"下载的内容大小: {content_length} bytes")
+            
+            if content_length < 1000:  # 如果文件太小，可能是错误响应
+                print(f"警告：下载的内容太小，可能不是有效的图片文件")
+                print(f"响应内容: {response.text[:200]}")  # 打印前200个字符
+                return False
+            
+            # 保存图片
+            with open(save_path, "wb") as f:
+                f.write(response.content)
+            print(f"图片已保存至: {save_path}")
+            return True
+            
+        except requests.exceptions.RequestException as e:
+            print(f"下载图片时出错: {str(e)}")
+            if hasattr(e.response, 'text'):
+                print(f"错误响应: {e.response.text[:200]}")  # 打印前200个字符
+            return False
+        except Exception as e:
+            print(f"保存图片时出错: {str(e)}")
+            return False
 
     def _update_documentation(self, filename: str, doc_path: str):
         """更新文档中的图片引用"""
@@ -110,9 +142,9 @@ class HeaderImageGenerator:
             with open(doc_path, 'r', encoding='utf-8') as f:
                 content = f.read()
                 
-            # 更新图片引用
+            # 更新图片引用为本地路径
             content = re.sub(
-                r'!\[.*?\]\(images/.*?\.png\)',
+                r'!\[.*?\]\(.*?\.png\)',
                 f'![Header Image](images/{filename})',
                 content
             )
@@ -122,6 +154,19 @@ class HeaderImageGenerator:
                 
             print("文档封面图片已更新")
             
+            # 上传到CDN
+            try:
+                import sys
+                import os
+                tools_dir = os.path.dirname(os.path.abspath(__file__))
+                sys.path.append(os.path.dirname(tools_dir))
+                from upload_images_to_cdn import ImageUploader, process_markdown_file
+                uploader = ImageUploader()
+                print("正在上传图片到CDN...")
+                process_markdown_file(doc_path, uploader)
+            except Exception as e:
+                print(f"上传到CDN时出错: {str(e)}")
+            
         except Exception as e:
             print(f"更新文档时出错: {str(e)}")
 
@@ -130,7 +175,7 @@ def main():
     parser.add_argument("--title", required=True, help="课程标题")
     parser.add_argument("--content", required=True, help="课程内容描述")
     parser.add_argument("--doc-path", required=True, help="当前文档路径")
-    parser.add_argument("--api-base", default="https://api.openai.com/v1", help="API基础URL")
+    parser.add_argument("--api-base", help="API基础URL")
     parser.add_argument("--brand-logo", default="AGI01", help="品牌 Logo 文字")
     parser.add_argument("--api-key", help="OpenAI API密钥")
     
@@ -142,8 +187,11 @@ def main():
         print("错误：未提供 API 密钥。请通过 --api-key 参数或 OPENAI_API_KEY 环境变量提供。")
         sys.exit(1)
     
+    # 获取API基础URL（优先使用环境变量，其次使用命令行参数）
+    api_base = os.getenv("OPENAI_API_BASE", args.api_base or "https://api.openai.com/v1")
+    
     try:
-        generator = HeaderImageGenerator(api_key=api_key, api_base=args.api_base)
+        generator = HeaderImageGenerator(api_key=api_key, api_base=api_base)
         print(f"正在为《{args.title}》生成题图...")
         image_path = generator.generate_header_image(args.title, args.content, args.doc_path, args.brand_logo)
         if image_path:
