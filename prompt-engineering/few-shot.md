@@ -1,6 +1,6 @@
 ---
 title: "少样本提示"
-slug: "prompt-engineering/few-shot"
+slug: "few-shot"
 description: "掌握少样本提示技术，通过示例引导提升AI模型效果"
 ---
 
