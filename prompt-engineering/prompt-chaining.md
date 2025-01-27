@@ -4,6 +4,8 @@ slug: "prompt-engineering/prompt-chaining"
 description: "学习如何使用链式提示技术，将复杂任务分解为多个子任务，提高模型的性能和可靠性"
 ---
 
+![Header Image](images/prompt-chaining_header.png)
+
 # 链式提示
 
 链式提示（Prompt Chaining）是一种高级提示工程技术，通过将复杂任务分解为多个子任务，并将每个子任务的输出作为下一个任务的输入，从而提高模型的性能和可靠性。
