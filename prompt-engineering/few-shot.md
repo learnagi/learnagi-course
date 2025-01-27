@@ -4,7 +4,7 @@ slug: "prompt-engineering/few-shot"
 description: "学习少样本提示的基本概念和应用技巧"
 ---
 
-![Header Image](https://z1.zve.cn/tutorial/prompt-engineering/few-shot_header.png)
+![Header Image](images/few-shot_header.png)
 
 # 少样本提示
 

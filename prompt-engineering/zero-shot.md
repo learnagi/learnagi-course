@@ -4,7 +4,7 @@ slug: "zero-shot"
 description: "学习零样本提示的基本概念和应用技巧"
 ---
 
-![Header Image](https://z1.zve.cn/tutorial/prompt-engineering/zero-shot_header.png)
+![Header Image](images/zero-shot_header.png)
 
 # 零样本提示
 
