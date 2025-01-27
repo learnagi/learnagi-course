@@ -8,7 +8,7 @@ estimated_minutes: 45
 language: "zh-CN"
 permalink: "https://www.agi01.com/course/agi/vector-db/indexing"
 course: "agi/course/vector-db"
-header_image: "https://z1.zve.cn/tutorial/vector-db/indexing_header.png"
+header_image: "images/indexing_header.png"
 ---
 
 # 向量数据库索引技术详解
