@@ -112,73 +112,88 @@ updated_at: "2024-01-26"
   - AI 驱动的网页摘要工具
   - Actions 开发流程
 
-### 6. 向量数据库与 RAG (vector-db)
-- [向量数据库基础](https://www.agi01.com/course/agi/vector-db/basics)
-  - 基本概念
-  - Pinecone 使用
-- [RAG 实现](https://www.agi01.com/course/agi/vector-db/rag-implementation)
+### 6. 向量数据库基础 (vector-db)
+- [基本概念](https://www.agi01.com/course/agi/vector-db/basics)
+  - 向量检索原理
+  - 索引机制
+  - 相似度计算
+- [主流方案](https://www.agi01.com/course/agi/vector-db/solutions)
+  - Pinecone
+  - Milvus
+  - Faiss
+- [性能优化](https://www.agi01.com/course/agi/vector-db/optimization)
+  - 索引优化
+  - 查询优化
+  - 资源管理
+
+### 7. 检索增强生成 (rag)
+- [RAG基础](https://www.agi01.com/course/agi/rag/basics)
+  - 系统架构
+  - 工作原理
+  - 应用场景
+- [系统实现](https://www.agi01.com/course/agi/rag/implementation)
   - 文档处理
   - 检索策略
-  - LangChain 集成
-- [高级应用](https://www.agi01.com/course/agi/vector-db/advanced-applications)
-  - RAG 系统优化
-  - 语音识别集成
-  - Query 改造
+  - 结果融合
+- [高级应用](https://www.agi01.com/course/agi/rag/advanced)
+  - 多源检索
+  - 混合增强
+  - 评估优化
 
-### 7. LangChain 应用开发 (langchain)
+### 8. LangChain 应用开发 (langchain)
 - [框架基础](https://www.agi01.com/course/agi/langchain/basics)
 - [组件开发](https://www.agi01.com/course/agi/langchain/components)
 - [企业应用](https://www.agi01.com/course/agi/langchain/enterprise)
 
-### 8. Agent 开发 (agents)
+### 9. Agent 开发 (agents)
 - [基础知识](https://www.agi01.com/course/agi/agents/basics)
 - [多 Agent 系统](https://www.agi01.com/course/agi/agents/multi-agent)
 - [工具集成](https://www.agi01.com/course/agi/agents/tool-integration)
 - [MetaGPT 开发](https://www.agi01.com/course/agi/agents/metagpt)
 
-### 9. 多模态应用 (multimodal)
+### 10. 多模态应用 (multimodal)
 - [基础集成](https://www.agi01.com/course/agi/multimodal/basics)
 - [高级应用](https://www.agi01.com/course/agi/multimodal/advanced)
 - [数字人开发](https://www.agi01.com/course/agi/multimodal/digital-human)
 
-### 10. LLM 微调与优化 (fine-tuning)
+### 11. LLM 微调与优化 (fine-tuning)
 - [微调基础](https://www.agi01.com/course/agi/fine-tuning/basics)
 - [高级技术](https://www.agi01.com/course/agi/fine-tuning/advanced)
   - LoRA/QLoRA
   - 领域特定优化
 - [实践应用](https://www.agi01.com/course/agi/fine-tuning/applications)
 
-### 11. AI 伦理与治理 (ai-ethics)
+### 12. AI 伦理与治理 (ai-ethics)
 - [伦理基础](https://www.agi01.com/course/agi/ai-ethics/basics)
 - [隐私保护](https://www.agi01.com/course/agi/ai-ethics/privacy)
 - [治理框架](https://www.agi01.com/course/agi/ai-ethics/governance)
 
-### 12. AI Web 开发 (ai-web)
+### 13. AI Web 开发 (ai-web)
 - [基础框架](https://www.agi01.com/course/agi/ai-web/frameworks)
 - [应用开发](https://www.agi01.com/course/agi/ai-web/development)
 - [部署维护](https://www.agi01.com/course/agi/ai-web/deployment)
 
-### 13. 企业项目实施 (enterprise)
+### 14. 企业项目实施 (enterprise)
 - [项目周期](https://www.agi01.com/course/agi/enterprise/project-lifecycle)
 - [部署策略](https://www.agi01.com/course/agi/enterprise/deployment)
 - [案例分析](https://www.agi01.com/course/agi/enterprise/case-studies)
 
-### 14. 多模型协作系统 (multi-model)
+### 15. 多模型协作系统 (multi-model)
 - [架构设计](https://www.agi01.com/course/agi/multi-model/architecture)
 - [协作机制](https://www.agi01.com/course/agi/multi-model/collaboration)
 - [系统优化](https://www.agi01.com/course/agi/multi-model/optimization)
 
-### 15. AI 评估与优化 (evaluation)
+### 16. AI 评估与优化 (evaluation)
 - [评估指标](https://www.agi01.com/course/agi/evaluation/metrics)
 - [分析工具](https://www.agi01.com/course/agi/evaluation/tools)
 - [优化方法](https://www.agi01.com/course/agi/evaluation/optimization)
 
-### 16. 职业发展 (career)
+### 17. 职业发展 (career)
 - [求职准备](https://www.agi01.com/course/agi/career/job-preparation)
 - [技术展示](https://www.agi01.com/course/agi/career/technical-showcase)
 - [职业规划](https://www.agi01.com/course/agi/career/planning)
 
-### 17. 项目实战 (projects)
+### 18. 项目实战 (projects)
 - <a href="https://www.agi01.com/course/agi/projects/practical" target="_blank">实战项目</a>
 - <a href="https://www.agi01.com/course/agi/projects/showcase" target="_blank">项目展示</a>
 - <a href="https://www.agi01.com/course/agi/projects/certification" target="_blank">结业认证</a>
