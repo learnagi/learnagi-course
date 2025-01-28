@@ -152,18 +152,22 @@ updated_at: "2024-01-26"
   - 资源管理
 
 ### 7. 检索增强生成 (rag)
-- [RAG基础](https://www.agi01.com/course/agi/rag/basics)
-  - 系统架构
-  - 工作原理
+- [RAG基础与文档处理](https://www.agi01.com/course/agi/rag/basics)
+  - RAG系统架构
+  - 工作原理与流程
+  - 文档处理技术
   - 应用场景
-- [系统实现](https://www.agi01.com/course/agi/rag/implementation)
-  - 文档处理
+  - 技术选型
+- [检索与生成](https://www.agi01.com/course/agi/rag/retrieval-generation)
   - 检索策略
-  - 结果融合
-- [高级应用](https://www.agi01.com/course/agi/rag/advanced)
-  - 多源检索
-  - 混合增强
-  - 评估优化
+  - 上下文处理
+  - 生成策略
+  - 质量控制
+- [系统优化](https://www.agi01.com/course/agi/rag/optimization)
+  - 性能优化
+  - 质量优化
+  - 成本控制
+  - 监控与维护
 
 ### 8. LangChain 应用开发 (langchain)
 - [框架基础](https://www.agi01.com/course/agi/langchain/basics)
