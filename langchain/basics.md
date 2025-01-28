@@ -1,8 +1,8 @@
 ---
-title: "LangChain基础：构建智能应用"
+title: "LangChain基础：开启AI应用开发之门"
 slug: "basics"
 sequence: 1
-description: "掌握LangChain框架的核心概念和基础组件，学习如何构建智能应用"
+description: "了解LangChain框架的核心概念，掌握环境配置和基本用法"
 is_published: true
 estimated_minutes: 45
 language: "zh-CN"
@@ -11,410 +11,413 @@ course: "agi/course/langchain"
 header_image: "images/basics_header.png"
 ---
 
-# LangChain基础：构建智能应用
+# LangChain基础：开启AI应用开发之门
 
-![LangChain基础：构建智能应用](images/basics_header.png)
+![LangChain基础：开启AI应用开发之门](images/basics_header.png)
 
 ## 什么是 LangChain？🤔
 
-LangChain 是一个强大的框架，它让我们能够：
-- 轻松构建基于 LLM 的应用
-- 组合不同的 AI 能力
-- 创建智能工作流程
+想象你在搭建一个乐高城堡，你需要：
+- 各种形状的积木（模型、工具）
+- 连接积木的方法（链式调用）
+- 建造的说明书（提示模板）
+- 特殊功能积木（代理、记忆）
 
-就像乐高积木一样，LangChain 提供了各种可组合的组件，让我们能快速搭建智能应用。
+LangChain 就像是一个强大的乐高工具箱，它提供了：
+- 统一的接口调用各种语言模型
+- 灵活的组件连接方式
+- 丰富的工具和集成
+- 完整的应用开发框架
 
 ### 为什么选择 LangChain？
 
-1. **开箱即用**
-   - 丰富的组件库
-   - 完整的工具链
-   - 简单的接口
+1. **简化开发**
+   - 统一的接口
+   - 丰富的组件
+   - 快速原型开发
 
-2. **灵活可扩展**
-   - 自定义组件
-   - 插件机制
-   - 多种集成
+2. **功能强大**
+   - 支持多种模型
+   - 提供各类工具
+   - 灵活的扩展性
 
 3. **生产可用**
-   - 性能优化
-   - 错误处理
-   - 监控支持
+   - 完善的文档
+   - 活跃的社区
+   - 企业级支持
 
-## 核心概念 📚
+## 环境配置 🛠️
 
-### 1. Chains（链）
+### 1. 安装 Python
 
-链就像是一条生产线，将不同的处理步骤串联起来：
+确保你的系统已安装 Python 3.8.1 或更高版本：
+
+```bash
+# 检查 Python 版本
+python --version
+
+# 如果需要安装或升级
+brew install python  # macOS
+# 或访问 python.org 下载安装包
+```
+
+### 2. 安装 LangChain
+
+```bash
+# 使用 pip 安装
+pip install langchain
+
+# 安装常用依赖
+pip install openai chromadb tiktoken
+```
+
+### 3. 配置环境变量
 
 ```python
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
+# 设置环境变量
+import os
+os.environ["OPENAI_API_KEY"] = "你的OpenAI API密钥"
+
+# 或者在终端中设置
+export OPENAI_API_KEY="你的OpenAI API密钥"
+```
+
+## 第一个 LangChain 应用 🚀
+
+让我们从一个简单的翻译应用开始：
+
+```python
+from langchain.chat_models import ChatOpenAI
+from langchain.prompts import ChatPromptTemplate
+from langchain.schema import HumanMessage
+
+# 1. 创建聊天模型
+chat = ChatOpenAI(temperature=0)
+
+# 2. 创建提示模板
+template = """你是一个专业的翻译助手。
+请将以下文本翻译成{target_language}：
+{text}
+"""
+
+prompt = ChatPromptTemplate.from_template(template)
+
+# 3. 准备消息
+messages = prompt.format_messages(
+    target_language="中文",
+    text="The early bird catches the worm."
+)
+
+# 4. 获取回复
+response = chat.invoke(messages)
+
+print(response.content)
+# 输出: 早起的鸟儿有虫吃。
+```
+
+让我们来分析这个简单应用的每个部分：
+
+1. **导入必要模块**
+   ```python
+   from langchain.chat_models import ChatOpenAI  # 聊天模型
+   from langchain.prompts import ChatPromptTemplate  # 提示模板
+   ```
+
+2. **创建模型实例**
+   ```python
+   chat = ChatOpenAI(temperature=0)  # temperature=0 表示输出最确定的答案
+   ```
+
+3. **定义提示模板**
+   ```python
+   template = """你是一个专业的翻译助手。
+   请将以下文本翻译成{target_language}：
+   {text}
+   """
+   ```
+
+4. **格式化提示**
+   ```python
+   messages = prompt.format_messages(
+       target_language="中文",
+       text="The early bird catches the worm."
+   )
+   ```
+
+5. **获取回复**
+   ```python
+   response = chat.invoke(messages)
+   ```
+
+## 基础概念 📚
+
+### 1. Models（模型）
+
+LangChain 支持多种类型的模型：
+
+```python
+# 聊天模型
+from langchain.chat_models import ChatOpenAI
+chat = ChatOpenAI()
+
+# 文本生成模型
 from langchain.llms import OpenAI
+llm = OpenAI()
 
-# 创建提示模板
-prompt = PromptTemplate(
-    input_variables=["product"],
-    template="给我介绍下{product}的主要特点和优势"
-)
-
-# 创建LLM
-llm = OpenAI(temperature=0.7)
-
-# 创建链
-chain = LLMChain(
-    llm=llm,
-    prompt=prompt
-)
-
-# 运行链
-response = chain.run("iPhone 15")
-print(response)
+# 嵌入模型
+from langchain.embeddings import OpenAIEmbeddings
+embeddings = OpenAIEmbeddings()
 ```
 
 ### 2. Prompts（提示）
 
-提示是与 LLM 交互的关键：
+提示是与模型交互的关键：
 
 ```python
-# 简单的提示模板
-simple_prompt = PromptTemplate(
-    input_variables=["question"],
-    template="请回答这个问题：{question}"
+# 简单提示模板
+from langchain.prompts import PromptTemplate
+
+prompt = PromptTemplate.from_template(
+    "给我讲一个关于{topic}的笑话"
 )
 
-# 带有示例的提示模板
-few_shot_prompt = FewShotPromptTemplate(
-    examples=[
-        {"question": "1+1等于几？", "answer": "1+1等于2"},
-        {"question": "2+2等于几？", "answer": "2+2等于4"}
-    ],
-    example_prompt=PromptTemplate(
-        input_variables=["question", "answer"],
-        template="问：{question}\n答：{answer}"
-    ),
-    suffix="问：{input}\n答：",
-    input_variables=["input"]
-)
-```
+# 聊天提示模板
+from langchain.prompts import ChatPromptTemplate
 
-### 3. Memory（记忆）
-
-让 AI 能够记住对话历史：
-
-```python
-from langchain.memory import ConversationBufferMemory
-
-# 创建记忆组件
-memory = ConversationBufferMemory()
-
-# 创建带记忆的链
-chain = ConversationChain(
-    llm=llm,
-    memory=memory,
-    verbose=True
-)
-
-# 对话示例
-chain.predict(input="你好！")
-chain.predict(input="我们刚才说了什么？")
-```
-
-### 4. Tools（工具）
-
-扩展 AI 的能力范围：
-
-```python
-from langchain.agents import load_tools
-from langchain.agents import initialize_agent
-
-# 加载工具
-tools = load_tools([
-    "serpapi",     # 搜索引擎
-    "calculator",  # 计算器
-    "wikipedia"    # 维基百科
+chat_prompt = ChatPromptTemplate.from_messages([
+    ("system", "你是一个幽默的助手"),
+    ("human", "讲个笑话吧"),
+    ("assistant", "好的，这是一个关于程序员的笑话..."),
+    ("human", "{input}")
 ])
+```
 
-# 创建代理
-agent = initialize_agent(
-    tools, 
-    llm, 
-    agent="zero-shot-react-description",
-    verbose=True
+### 3. Chains（链）
+
+链可以将多个组件连接起来：
+
+```python
+from langchain.chains import LLMChain
+from langchain.chat_models import ChatOpenAI
+
+# 创建链
+chain = LLMChain(
+    llm=ChatOpenAI(),
+    prompt=prompt
 )
 
-# 使用代理
-agent.run("2023年世界杯冠军是谁？")
+# 运行链
+result = chain.invoke({"topic": "程序员"})
+print(result["text"])
 ```
 
-## 实际应用案例 💡
+## 实用技巧 💡
 
-### 1. 智能客服机器人
-
-```python
-from langchain.chains import ConversationChain
-from langchain.memory import ConversationBufferWindowMemory
-
-class CustomerServiceBot:
-    def __init__(self):
-        # 初始化记忆
-        self.memory = ConversationBufferWindowMemory(
-            k=5  # 记住最近5轮对话
-        )
-        
-        # 创建对话链
-        self.chain = ConversationChain(
-            llm=OpenAI(temperature=0.7),
-            memory=self.memory,
-            verbose=True
-        )
-        
-    async def handle_message(self, message: str) -> str:
-        """处理用户消息"""
-        try:
-            # 生成回复
-            response = await self.chain.apredict(
-                input=message
-            )
-            
-            return response
-            
-        except Exception as e:
-            return f"抱歉，我遇到了一些问题：{str(e)}"
-```
-
-### 2. 智能文档助手
+### 1. 调试输出
 
 ```python
-from langchain.document_loaders import TextLoader
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import Chroma
+# 启用详细输出
+import langchain
+langchain.debug = True
 
-class DocumentAssistant:
-    def __init__(self):
-        self.embeddings = OpenAIEmbeddings()
-        self.db = None
-        
-    def load_document(self, file_path: str):
-        """加载文档"""
-        # 1. 加载文件
-        loader = TextLoader(file_path)
-        documents = loader.load()
-        
-        # 2. 分割文本
-        text_splitter = CharacterTextSplitter(
-            chunk_size=1000,
-            chunk_overlap=200
-        )
-        texts = text_splitter.split_documents(documents)
-        
-        # 3. 创建向量数据库
-        self.db = Chroma.from_documents(
-            texts,
-            self.embeddings
-        )
-        
-    async def answer_question(self, question: str) -> str:
-        """回答问题"""
-        if not self.db:
-            return "请先加载文档"
-            
-        # 1. 搜索相关内容
-        docs = self.db.similarity_search(question)
-        
-        # 2. 生成回答
-        chain = load_qa_chain(OpenAI(), chain_type="stuff")
-        response = await chain.arun(
-            input_documents=docs,
-            question=question
-        )
-        
-        return response
-```
-
-### 3. 数据分析助手
-
-```python
-from langchain.agents import create_pandas_dataframe_agent
-import pandas as pd
-
-class DataAnalysisAssistant:
-    def __init__(self):
-        self.agent = None
-        
-    def load_data(self, file_path: str):
-        """加载数据"""
-        # 读取数据
-        df = pd.read_csv(file_path)
-        
-        # 创建数据分析代理
-        self.agent = create_pandas_dataframe_agent(
-            OpenAI(temperature=0),
-            df,
-            verbose=True
-        )
-        
-    def analyze(self, question: str) -> str:
-        """分析数据"""
-        if not self.agent:
-            return "请先加载数据"
-            
-        try:
-            return self.agent.run(question)
-        except Exception as e:
-            return f"分析过程中出现错误：{str(e)}"
-```
-
-## 最佳实践 ✨
-
-### 1. 提示工程
-
-- **明确指令**：给出清晰的任务描述
-```python
-good_prompt = """
-请分析以下文本的情感倾向：
-- 如果是正面情感，返回"positive"
-- 如果是负面情感，返回"negative"
-- 如果是中性情感，返回"neutral"
-
-文本：{text}
-"""
-
-bad_prompt = """
-分析情感：{text}
-"""
-```
-
-- **结构化输出**：指定返回格式
-```python
-structured_prompt = """
-分析以下产品评价，返回JSON格式：
-{
-    "sentiment": "positive/negative/neutral",
-    "key_points": ["优点1", "优点2"],
-    "rating": 1-5
-}
-
-评价：{review}
-"""
+# 使用 verbose 参数
+chain = LLMChain(
+    llm=ChatOpenAI(),
+    prompt=prompt,
+    verbose=True
+)
 ```
 
 ### 2. 错误处理
 
 ```python
-class RobustChain:
-    def __init__(self, llm, max_retries=3):
-        self.llm = llm
-        self.max_retries = max_retries
-        
-    async def run_with_retry(self, prompt):
-        """带重试的运行"""
-        for i in range(self.max_retries):
-            try:
-                return await self.llm.agenerate([prompt])
-            except Exception as e:
-                if i == self.max_retries - 1:
-                    raise e
-                await asyncio.sleep(1 * (i + 1))
-```
-
-### 3. 性能优化
-
-```python
-class OptimizedChain:
-    def __init__(self):
-        self.cache = {}
-        self.lock = asyncio.Lock()
-        
-    async def run_with_cache(self, key, func):
-        """带缓存的运行"""
-        # 检查缓存
-        if key in self.cache:
-            return self.cache[key]
-            
-        # 获取锁
-        async with self.lock:
-            # 双重检查
-            if key in self.cache:
-                return self.cache[key]
-                
-            # 执行函数
-            result = await func()
-            
-            # 更新缓存
-            self.cache[key] = result
-            return result
-```
-
-## 实用技巧 💪
-
-### 1. 批量处理
-
-```python
-async def batch_process(items, chain, batch_size=5):
-    """批量处理数据"""
-    results = []
-    for i in range(0, len(items), batch_size):
-        batch = items[i:i + batch_size]
-        # 并行处理
-        tasks = [
-            chain.arun(item)
-            for item in batch
-        ]
-        batch_results = await asyncio.gather(*tasks)
-        results.extend(batch_results)
-    return results
-```
-
-### 2. 流式处理
-
-```python
+from langchain.callbacks.manager import CallbackManager
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 
-# 创建流式LLM
-streaming_llm = OpenAI(
+# 创建带有回调的模型
+chat = ChatOpenAI(
     streaming=True,
-    callbacks=[StreamingStdOutCallbackHandler()],
-    temperature=0
+    callback_manager=CallbackManager([
+        StreamingStdOutCallbackHandler()
+    ]),
+    verbose=True
 )
 
-# 流式链
-streaming_chain = LLMChain(
-    llm=streaming_llm,
-    prompt=prompt
-)
+# 使用异常处理
+try:
+    response = chat.invoke([HumanMessage(content="Hello")])
+except Exception as e:
+    print(f"发生错误：{str(e)}")
 ```
 
-### 3. 调试技巧
+### 3. 模型参数调优
 
 ```python
-from langchain.callbacks import get_openai_callback
+# 调整创造性
+creative_chat = ChatOpenAI(temperature=0.9)  # 更有创意的回答
 
-# 跟踪token使用
-with get_openai_callback() as cb:
-    response = chain.run("测试输入")
-    print(f"总Token数: {cb.total_tokens}")
-    print(f"提示Token数: {cb.prompt_tokens}")
-    print(f"完成Token数: {cb.completion_tokens}")
-    print(f"总成本: ${cb.total_cost}")
+# 调整确定性
+precise_chat = ChatOpenAI(temperature=0)  # 更确定的回答
+
+# 限制输出长度
+short_chat = ChatOpenAI(max_tokens=50)  # 限制回答长度
+```
+
+## 应用示例 🌟
+
+### 1. 智能问答
+
+```python
+from langchain.chains import ConversationChain
+from langchain.memory import ConversationBufferMemory
+
+# 创建带记忆的对话链
+conversation = ConversationChain(
+    llm=ChatOpenAI(),
+    memory=ConversationBufferMemory()
+)
+
+# 进行对话
+response1 = conversation.predict(input="你好！")
+print(response1)
+# 输出: 你好！很高兴见到你。有什么我可以帮你的吗？
+
+response2 = conversation.predict(input="我们刚才说了什么？")
+print(response2)
+# 输出: 我们刚才打了招呼。你说"你好！"，我回复了问候并表示很高兴见到你。
+```
+
+### 2. 文本摘要
+
+```python
+from langchain.chains.summarize import load_summarize_chain
+
+# 创建摘要链
+chain = load_summarize_chain(
+    llm=ChatOpenAI(),
+    chain_type="map_reduce"  # 使用map_reduce方式处理长文本
+)
+
+# 准备文档
+from langchain.docstore.document import Document
+doc = Document(
+    page_content="""
+    人工智能(AI)正在改变我们的生活方式。从智能手机助手到自动驾驶汽车，
+    AI技术已经渗透到了我们生活的方方面面。未来，AI将继续发展，
+    可能带来更多令人兴奋的创新。但同时，我们也需要注意AI发展带来的挑战，
+    确保技术发展服务于人类福祉。
+    """
+)
+
+# 生成摘要
+summary = chain.invoke([doc])
+print(summary["output_text"])
+# 输出: AI技术正在改变生活，带来创新的同时也需关注其挑战，确保造福人类。
+```
+
+## 最佳实践 ✨
+
+### 1. 提示设计
+
+```python
+# 好的提示模板
+good_prompt = PromptTemplate.from_template("""
+请完成以下任务：
+1. {task_1}
+2. {task_2}
+3. {task_3}
+
+注意事项：
+- 请逐步完成每个任务
+- 清晰说明每步的理由
+- 最后总结所有结果
+""")
+
+# 不好的提示模板
+bad_prompt = PromptTemplate.from_template("""
+完成{task_1}{task_2}{task_3}
+""")  # 缺乏结构和清晰的指示
+```
+
+### 2. 链式设计
+
+```python
+# 好的链式设计
+from langchain.chains import SimpleSequentialChain
+
+# 第一个链：生成大纲
+outline_chain = LLMChain(
+    llm=ChatOpenAI(),
+    prompt=PromptTemplate.from_template("为{topic}生成大纲")
+)
+
+# 第二个链：扩展内容
+content_chain = LLMChain(
+    llm=ChatOpenAI(),
+    prompt=PromptTemplate.from_template("基于以下大纲生成详细内容：{outline}")
+)
+
+# 组合链
+full_chain = SimpleSequentialChain(
+    chains=[outline_chain, content_chain]
+)
+
+# 运行组合链
+result = full_chain.invoke({"topic": "人工智能的未来"})
+```
+
+### 3. 错误处理和日志
+
+```python
+import logging
+
+# 配置日志
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+class SafeChain:
+    def __init__(self, chain):
+        self.chain = chain
+        
+    def run(self, input_data):
+        try:
+            # 记录输入
+            logger.info(f"输入: {input_data}")
+            
+            # 运行链
+            result = self.chain.invoke(input_data)
+            
+            # 记录输出
+            logger.info(f"输出: {result}")
+            
+            return result
+            
+        except Exception as e:
+            # 记录错误
+            logger.error(f"错误: {str(e)}")
+            
+            # 返回友好的错误信息
+            return {
+                "error": "处理过程中出现错误",
+                "details": str(e)
+            }
 ```
 
 ## 小结 📝
 
-LangChain 是一个强大而灵活的框架，它能帮助我们：
+LangChain 是一个强大的框架，它能帮助我们：
 1. 快速构建 AI 应用
-2. 组合多种 AI 能力
-3. 优化应用性能
+2. 灵活组合各种组件
+3. 处理复杂的应用场景
 
 关键要点：
+- 理解基础概念
 - 掌握核心组件
-- 理解最佳实践
-- 注重实际应用
+- 注重实践应用
 
 下一步：
 - 探索更多组件
 - 尝试实际项目
-- 优化应用性能
+- 参与社区讨论
 
-记住：好的应用不是一蹴而就的，需要在实践中不断优化和改进。从简单的应用开始，逐步增加复杂性，最终构建出强大而可靠的系统。
+记住：好的应用是一步步构建的。从简单的例子开始，逐步添加更多功能，最终打造出强大的应用。
