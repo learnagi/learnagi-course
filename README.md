@@ -192,30 +192,11 @@ updated_at: "2024-01-26"
   - 领域特定优化
 - [实践应用](https://www.agi01.com/course/agi/fine-tuning/applications)
 
-### 12. AI 伦理与治理 (ai-ethics)
-- [伦理基础](https://www.agi01.com/course/agi/ai-ethics/basics)
-- [隐私保护](https://www.agi01.com/course/agi/ai-ethics/privacy)
-- [治理框架](https://www.agi01.com/course/agi/ai-ethics/governance)
-
-### 13. AI Web 开发 (ai-web)
-- [基础框架](https://www.agi01.com/course/agi/ai-web/frameworks)
-- [应用开发](https://www.agi01.com/course/agi/ai-web/development)
-- [部署维护](https://www.agi01.com/course/agi/ai-web/deployment)
-
 ### 14. 企业项目实施 (enterprise)
 - [项目周期](https://www.agi01.com/course/agi/enterprise/project-lifecycle)
 - [部署策略](https://www.agi01.com/course/agi/enterprise/deployment)
 - [案例分析](https://www.agi01.com/course/agi/enterprise/case-studies)
 
-### 15. 多模型协作系统 (multi-model)
-- [架构设计](https://www.agi01.com/course/agi/multi-model/architecture)
-- [协作机制](https://www.agi01.com/course/agi/multi-model/collaboration)
-- [系统优化](https://www.agi01.com/course/agi/multi-model/optimization)
-
-### 16. AI 评估与优化 (evaluation)
-- [评估指标](https://www.agi01.com/course/agi/evaluation/metrics)
-- [分析工具](https://www.agi01.com/course/agi/evaluation/tools)
-- [优化方法](https://www.agi01.com/course/agi/evaluation/optimization)
 
 ### 17. 职业发展 (career)
 - [求职准备](https://www.agi01.com/course/agi/career/job-preparation)
